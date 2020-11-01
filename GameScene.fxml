@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="862.0" prefWidth="1183.0" styleClass="MainBoard" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blindmonkeys.GameSceneController">
+    <children>
+      <Pane id="cardTable" layoutX="249.0" layoutY="431.0" prefHeight="450.0" prefWidth="650.0" styleClass="Card" stylesheets="@Style.css">
+         <children>
+            <ImageView id="card1" fx:id="card1" fitHeight="206.0" fitWidth="139.0" layoutX="175.0" layoutY="19.0" onMouseClicked="#handleCard1Action" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cardBack.png" />
+               </image>
+            </ImageView>
+            <ImageView id="card2" fx:id="card2" fitHeight="200.0" fitWidth="139.0" layoutX="336.0" layoutY="19.0" onMouseClicked="#handleCard2Action" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cardBack.png" />
+               </image>
+            </ImageView>
+            <ImageView id="card3" fx:id="card3" fitHeight="206.0" fitWidth="139.0" layoutX="175.0" layoutY="232.0" onMouseClicked="#handleCard3Action" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cardBack.png" />
+               </image>
+            </ImageView>
+            <ImageView id="card4" fx:id="card4" fitHeight="200.0" fitWidth="139.0" layoutX="336.0" layoutY="232.0" onMouseClicked="#handleCard4Action" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cardBack.png" />
+               </image>
+            </ImageView>
+            <Button id="endGameButton" fx:id="endGameButton" layoutX="510.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleEndGameButtonAction" prefHeight="30.0" prefWidth="126.0" text="RUNDENENDE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button id="throwSameCardButton" fx:id="throwSameCardButton" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleThrowSameCardButtonAction" prefHeight="31.0" prefWidth="139.0" text="SELBE KARTE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button id="endThrowButton" fx:id="endThrowButton" layoutX="14.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleEndThrowButtonAction" prefHeight="31.0" prefWidth="139.0" text="BESTÄTIGEN" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Label id="playerName" fx:id="playerName" layoutX="547.0" layoutY="24.0" stylesheets="@Style.css" text="SPIELER 1" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Pane id="DeckPane" layoutX="173.0" layoutY="65.0" prefHeight="359.0" prefWidth="839.0">
+         <children>
+            <Pane layoutX="270.0" layoutY="30.0" prefHeight="300.0" prefWidth="300.0" styleClass="Desk" stylesheets="@Style.css">
+               <children>
+                  <ImageView id="cardOnTable" fx:id="cardOnTable" fitHeight="206.0" fitWidth="139.0" layoutX="81.0" layoutY="51.0" onMouseClicked="#handleCardOnTableAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cardBack.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView id="deskCards" fx:id="remainingDeck" fitHeight="206.0" fitWidth="139.0" layoutX="75.0" layoutY="80.0" onMouseClicked="#handleRemainingDeckAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cardBack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ImageView id="drawedCard" fx:id="drawedCard" fitHeight="206.0" fitWidth="139.0" layoutX="55.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@cardBack.png" />
+         </image>
+      </ImageView>
+      <Button id="throwButton" fx:id="throwButton" layoutX="62.0" layoutY="771.0" mnemonicParsing="false" onAction="#handleThrowButtonAction" prefHeight="30.0" prefWidth="126.0" text="WEGLEGEN" visible="false">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label id="playerName" fx:id="warningLabel" layoutX="285.0" layoutY="43.0" stylesheets="@Style.css" text="WÄHLEN SIE EINE KARTE ZUM TAUSCHEN ODER WEGLEGEN" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Pane fx:id="scoreBoardPane" layoutX="967.0" layoutY="88.0" prefHeight="258.0" prefWidth="162.0" visible="false">
+         <children>
+            <Label layoutX="45.0" layoutY="14.0" prefHeight="47.0" prefWidth="150.0" text="PUNKTZAHL" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="72.0" prefHeight="30.0" prefWidth="101.0" text="SPIELER 1" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="105.0" prefHeight="30.0" prefWidth="101.0" text="SPIELER 2" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="139.0" prefHeight="30.0" prefWidth="101.0" text="SPIELER 3" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="174.0" prefHeight="30.0" prefWidth="101.0" text="SPIELER 4" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="score1" layoutX="129.0" layoutY="72.0" prefHeight="30.0" prefWidth="71.0" text="X" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="score2" layoutX="129.0" layoutY="105.0" prefHeight="30.0" prefWidth="71.0" text="X" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="score3" layoutX="129.0" layoutY="138.0" prefHeight="30.0" prefWidth="71.0" text="X" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="score4" layoutX="129.0" layoutY="171.0" prefHeight="30.0" prefWidth="71.0" text="X" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button id="startButton" fx:id="continueButton" layoutX="36.0" layoutY="213.0" mnemonicParsing="false" onAction="#handleContinueButtonAction" prefHeight="31.0" prefWidth="90.0" text="WEITER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane id="nextPlayerPane" fx:id="nextPlayerPane" layoutX="355.0" layoutY="166.0" prefHeight="497.0" prefWidth="527.0" styleClass="Settings" stylesheets="@Style.css" visible="false">
+         <children>
+            <Pane fx:id="selectPlayerPane1" layoutX="-31.0" prefHeight="450.0" prefWidth="558.0">
+               <children>
+                  <Label layoutX="183.0" layoutY="14.0" prefHeight="30.0" prefWidth="192.0" text="GEGNERKARTEN" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView id="nextPlayer1" fx:id="nextPlayer1" fitHeight="206.0" fitWidth="139.0" layoutX="127.0" layoutY="54.0" onMouseClicked="#handleNextPlayer1Action" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cardBack.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="nextPlayer2" fx:id="nextPlayer2" fitHeight="206.0" fitWidth="139.0" layoutX="292.0" layoutY="54.0" onMouseClicked="#handleNextPlayer2Action" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cardBack.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="nextPlayer3" fx:id="nextPlayer3" fitHeight="206.0" fitWidth="139.0" layoutX="127.0" layoutY="276.0" onMouseClicked="#handleNextPlayer3Action" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cardBack.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="nextPlayer4" fx:id="nextPlayer4" fitHeight="206.0" fitWidth="139.0" layoutX="292.0" layoutY="276.0" onMouseClicked="#handleNextPlayer4Action" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cardBack.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane id="gameSettings" fx:id="gameSettingsPane" layoutX="353.0" layoutY="203.0" prefHeight="450.0" prefWidth="527.0" styleClass="Settings" stylesheets="@Style.css">
+         <children>
+            <Pane fx:id="selectPlayerPane" prefHeight="450.0" prefWidth="527.0">
+               <children>
+                  <Button id="startButton" fx:id="startButton" layoutX="201.0" layoutY="284.0" mnemonicParsing="false" onAction="#handleStartButtonAction" prefHeight="30.0" prefWidth="126.0" text="START">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <RadioButton fx:id="radioButton2" layoutX="204.0" layoutY="155.0" mnemonicParsing="false" selected="true" text="2 SPIELER" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="toggleGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <Label layoutX="156.0" layoutY="90.0" prefHeight="30.0" prefWidth="244.0" text="SPIELERANZAHL" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="radioButton3" layoutX="204.0" layoutY="198.0" mnemonicParsing="false" text="3 SPIELER" textFill="WHITE" toggleGroup="$toggleGroup">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="radioButton4" layoutX="204.0" layoutY="242.0" mnemonicParsing="false" text="4 SPIELER" textFill="WHITE" toggleGroup="$toggleGroup">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
