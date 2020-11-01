@@ -361,8 +361,8 @@ public class GameSceneController implements Initializable {
     private void cardExchange(int cardNumber) {
         if (isCardSelect) {
             warningLabel.setVisible(false); //Meldung verbergen
-            refreshCardOnTable(game.getCurrentPlayer().getCards().get(cardNumber - 1)); //masadaki kartı degistiriyor
-            game.getCurrentPlayer().getCards().set(cardNumber - 1, selectedCard); // oyuncunun kartını degistiriyor
+            refreshCardOnTable(game.getCurrentPlayer().getCards().get(cardNumber - 1)); //Stapelkarte wechseln
+            game.getCurrentPlayer().getCards().set(cardNumber - 1, selectedCard); //spielerkarte wechseln
             drawedCard.setVisible(false);
             throwButton.setVisible(false);
             isCardSelect = false;
