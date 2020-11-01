@@ -360,7 +360,7 @@ public class GameSceneController implements Initializable {
 
     private void cardExchange(int cardNumber) {
         if (isCardSelect) {
-            warningLabel.setVisible(false); //kırmızı yazıyı kapatıyor
+            warningLabel.setVisible(false); //Meldung verbergen
             refreshCardOnTable(game.getCurrentPlayer().getCards().get(cardNumber - 1)); //masadaki kartı degistiriyor
             game.getCurrentPlayer().getCards().set(cardNumber - 1, selectedCard); // oyuncunun kartını degistiriyor
             drawedCard.setVisible(false);
@@ -405,7 +405,7 @@ public class GameSceneController implements Initializable {
             refreshCardVisibility();
             throwSameCard = false;
             endThrowButton.setVisible(true);
-        } // else +1 Card Penalty Case 
+        } 
         else {
             game.getCurrentPlayer().getCards().add(new Card("penalty", 5)); // 5 Strafpunkte
         }
